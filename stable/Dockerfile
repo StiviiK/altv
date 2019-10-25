@@ -6,16 +6,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Environment
 ENV PORT 7788
-ENV USER altv
 ENV SERVER_DIR /var/altv/server/
 
 # Install deps
 RUN apt update && \
-    apt install -y wget libc-bin nodejs
-
-# Add altv user
-RUN adduser --disabled-password --gecos "" ${USER} && \
-    mkdir -p ${SERVER_DIR}
+    apt install -y wget libc-bin --no-install-recommends
 
 # Download binaries
 ARG CDN_BASE_URL=https://cdn.altv.mp
@@ -54,9 +49,7 @@ EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
 
 # Fix permissions
-RUN chown -R ${USER}:${USER} .
 RUN chmod +x altv-server
 RUN chmod +x entrypoint.sh
 
-USER ${USER}
 ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
