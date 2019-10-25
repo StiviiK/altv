@@ -11,7 +11,7 @@ ENV SERVER_DIR /var/altv/server/
 
 # Install deps
 RUN apt update && \
-    apt install -y wget libc-bin
+    apt install -y wget libc-bin nodejs
 
 # Add altv user
 RUN adduser --disabled-password --gecos "" ${USER} && \
