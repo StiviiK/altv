@@ -1,0 +1,18 @@
+name: Build and push stable image
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build and push image
+      uses: whoan/docker-build-with-cache-action@v1
+      with:
+        image_name: stiviik/altv/stable
+        username: ${{ secrets.GPR_USERNAME }}
+        password: "${{ secrets.GPR_TOKEN }}"
+        registry: docker.pkg.github.com
+        dockerfile: stable/Dockerfile

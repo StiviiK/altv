@@ -1,0 +1,27 @@
+{
+    "_baseUrl": "https://cdn.altv.mp",
+    "_salt": "",
+    "stable": {
+        "altv-server":                      "/server/stable/x64_linux/altv-server",
+        "others/server.cfg":                "/others/server.cfg",
+        "modules/libnode-module.so":        "/node-module/stable/x64_linux/modules/libnode-module.so",
+        "libnode.so.72":                    "/node-module/stable/x64_linux/libnode.so.72",
+        "modules/libcsharp-module.so":      "/coreclr-module/stable/x64_linux/modules/libcsharp-module.so",
+        "AltV.Net.Host.dll":                "/coreclr-module/stable/x64_linux/AltV.Net.Host.dll",
+        "AltV.Net.Host.runtimeconfig.json": "/coreclr-module/stable/x64_linux/AltV.Net.Host.runtimeconfig.json",
+        "data/vehmodels.bin":               "/server/stable/x64_linux/data/vehmodels.bin",
+        "data/vehmods.bin":                 "/server/stable/x64_linux/data/vehmods.bin"
+    },
+    "beta": {
+        "altv-server":                      "/server/beta/x64_linux/altv-server",
+        "others/server.cfg":                "/others/server.cfg",
+        "modules/libnode-module.so":        "/node-module/beta/x64_linux/modules/libnode-module.so",
+        "libnode.so.72":                    "/node-module/beta/x64_linux/libnode.so.72",
+        "modules/libcsharp-module.so":      "/coreclr-module/beta/x64_linux/modules/libcsharp-module.so",
+        "AltV.Net.Host.dll":                "/coreclr-module/beta/x64_linux/AltV.Net.Host.dll",
+        "AltV.Net.Host.runtimeconfig.json": "/coreclr-module/beta/x64_linux/AltV.Net.Host.runtimeconfig.json",
+        "data/vehmodels.bin":               "/server/beta/x64_linux/data/vehmodels.bin",
+        "data/vehmods.bin":                 "/server/beta/x64_linux/data/vehmods.bin"
+    },
+    "alpha": {}
+}
