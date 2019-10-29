@@ -10,16 +10,24 @@ steps:
   
 - script: docker build -t docker.pkg.github.com/stiviik/altv/stable:$(Build.BuildNumber) -f ./stable/Dockerfile .
   displayName: Building stable docker image
+  
+- script: docker tag docker.pkg.github.com/stiviik/altv/stable:$(Build.BuildNumber) docker.pkg.github.com/stiviik/altv/stable:latest
+  displayName: Create latest stable tag
 
 - script: docker build -t docker.pkg.github.com/stiviik/altv/beta:$(Build.BuildNumber) -f ./beta/Dockerfile .
   displayName: Building beta docker image
-  
-# - script: |-
-#     curl -s -H "Authorization: Token $(gpr_pat)" -H "Accept: application/json" -H "Content-type: application/json" -X POST -d "{ \"ref\": \"refs/tags/$(Build.BuildNumber)\", \"sha\": \"$(Build.SourceVersion)\"}" https://api.github.com/repos/$(Build.Repository.ID)/git/refs
-#   displayName: Create tag
+ 
+- script: docker tag docker.pkg.github.com/stiviik/altv/beta:$(Build.BuildNumber) docker.pkg.github.com/stiviik/altv/beta:latest
+  displayName: Create latest beta tag
 
 - script: docker push docker.pkg.github.com/stiviik/altv/stable:$(Build.BuildNumber)
   displayName: Pushing stable docker image to GitHub Package Repository
+ 
+- script: docker push docker.pkg.github.com/stiviik/altv/stable:latest
+  displayName: Pushing stable docker image to GitHub Package Repository
 
 - script: docker push docker.pkg.github.com/stiviik/altv/beta:$(Build.BuildNumber)
+  displayName: Pushing beta docker image to GitHub Package Repository
+
+- script: docker push docker.pkg.github.com/stiviik/altv/beta:latest
   displayName: Pushing beta docker image to GitHub Package Repository
