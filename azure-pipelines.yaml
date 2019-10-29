@@ -11,7 +11,7 @@ steps:
 - script: docker build -t docker.pkg.github.com/$(Build.Repository.ID)/stable:$(Build.BuildNumber) -f ./stable/Dockerfile .
   displayName: Building stable docker image
 
-- script: docker build -t docker.pkg.github.com/$(Build.Repository.ID)/beta:$(Build.BuildNumber) -f ./stable/Dockerfile .
+- script: docker build -t docker.pkg.github.com/$(Build.Repository.ID)/beta:$(Build.BuildNumber) -f ./beta/Dockerfile .
   displayName: Building beta docker image
   
 # - script: |-
@@ -21,5 +21,5 @@ steps:
 - script: docker push docker.pkg.github.com/$(Build.Repository.ID)/stable:$(Build.BuildNumber)
   displayName: Pushing stable docker image to GitHub Package Repository
 
-- script: docker push docker.pkg.github.com/$(Build.Repository.ID)/stable:$(Build.BuildNumber)
+- script: docker push docker.pkg.github.com/$(Build.Repository.ID)/beta:$(Build.BuildNumber)
   displayName: Pushing beta docker image to GitHub Package Repository
