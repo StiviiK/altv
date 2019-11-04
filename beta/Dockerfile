@@ -1,5 +1,5 @@
 FROM debian:10
-LABEL maintainer="StiviK <info@stivik.de>"
+LABEL maintainer="StiviK <docker@stivik.de>"
 
 # small fix for debian ci builds
 ARG DEBIAN_FRONTEND=noninteractive
