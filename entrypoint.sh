@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
-#BASEDIR=$(dirname $0)
-#export LD_LIBRARY_PATH=${BASEDIR}
-#cd ${BASEDIR}
+export LD_LIBRARY_PATH=$(pwd)
 ./altv-server --config "config/server.cfg" --logfile "logs/server.log"
