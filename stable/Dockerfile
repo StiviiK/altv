@@ -15,7 +15,7 @@ RUN apt update && \
 # Download binaries
 ARG CDN_BASE_URL=https://cdn.altv.mp
 ARG BRANCH=stable
-ARG SALT=udbj0k
+ARG SALT=e0vj9o
 
 # Prepare server folder
 RUN mkdir -p ${SERVER_DIR}/data && \
