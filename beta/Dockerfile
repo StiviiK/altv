@@ -21,7 +21,9 @@ ARG SALT=e0vj9o
 RUN mkdir -p ${SERVER_DIR}/data && \
     mkdir -p ${SERVER_DIR}/modules && \
     mkdir -p ${SERVER_DIR}/resources-data && \
-    mkdir -p ${SERVER_DIR}/config
+    mkdir -p ${SERVER_DIR}/config && \
+    mkdir -p ${SERVER_DIR}/bin
+ENV PATH="${SERVER_DIR}/bin:${PATH}"
 
 # Download required binaries
 RUN wget --no-cache -nv --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/altv-server                       ${CDN_BASE_URL}/server/${BRANCH}/x64_linux/altv-server?salt=${SALT} && \
@@ -44,12 +46,16 @@ RUN apt purge -y wget && \
 
 # Expose ports and start the Server
 WORKDIR ${SERVER_DIR}
-ADD ./entrypoint.sh ./entrypoint.sh
 EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
 
+# Add altv-server to PATH
+RUN ln -s ${SERVER_DIR}/altv-server ${SERVER_DIR}/bin/altv-server
+
+# Fix libaries
+ENV LD_LIBRARY_PATH=${SERVER_DIR}
+
 # Fix permissions
 RUN chmod +x altv-server
-RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
+ENTRYPOINT ["altv-server", "--config", "config/server.cfg", "--logfile", "logs/server.log"]
