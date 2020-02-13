@@ -1,4 +1,4 @@
-FROM debian:10
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 LABEL maintainer="StiviK <docker@stivik.de>"
 
 # small fix for debian ci builds
