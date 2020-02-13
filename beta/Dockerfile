@@ -10,7 +10,7 @@ ENV SERVER_DIR /var/altv/server/
 
 # Install deps
 RUN apt update && \
-    apt install -y wget libc-bin
+    apt install -y wget libc-bin libatomic
     
 # Download binaries
 ARG CDN_BASE_URL=https://cdn.altv.mp
