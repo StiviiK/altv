@@ -1,4 +1,4 @@
-name: Build and push stable image
+name: Build and push rc image
 on:
   push:
     branches:
@@ -11,8 +11,8 @@ jobs:
     - name: Build and push image
       uses: whoan/docker-build-with-cache-action@v1
       with:
-        image_name: stiviik/altv/stable
+        image_name: stiviik/altv/rc
         username: ${{ secrets.GPR_USERNAME }}
         password: "${{ secrets.GPR_TOKEN }}"
         registry: docker.pkg.github.com
-        dockerfile: stable/Dockerfile
+        dockerfile: rc/Dockerfile

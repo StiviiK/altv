@@ -1,4 +1,4 @@
-name: Build beta image
+name: Build release image
 on: [pull_request]
 jobs:
   build:
@@ -8,9 +8,9 @@ jobs:
     - name: Build and push image
       uses: whoan/docker-build-with-cache-action@v1
       with:
-        image_name: stiviik/altv/beta
+        image_name: stiviik/altv/release
         username: ${{ secrets.GPR_USERNAME }}
         password: "${{ secrets.GPR_TOKEN }}"
         registry: docker.pkg.github.com
-        dockerfile: beta/Dockerfile
+        dockerfile: release/Dockerfile
         push_image_and_stages: false
